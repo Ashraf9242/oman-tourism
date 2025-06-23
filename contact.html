@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Discover Oman</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="###" alt="Oman Logo" class="logo-img">
+                <span class="logo-text">Discover Oman</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="attractions.html" class="nav-link">Attractions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Contact Us</h1>
+            <p class="page-subtitle">Get in touch to plan your perfect Oman adventure</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Send us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" name="country">
+                                <option value="">Select your country</option>
+                                <option value="oman">Oman</option>
+                                <option value="uae">United Arab Emirates</option>
+                                <option value="saudi">Saudi Arabia</option>
+                                <option value="qatar">Qatar</option>
+                                <option value="kuwait">Kuwait</option>
+                                <option value="bahrain">Bahrain</option>
+                                <option value="usa">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="germany">Germany</option>
+                                <option value="france">France</option>
+                                <option value="india">India</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="travelType">Type of Travel</label>
+                            <select id="travelType" name="travelType">
+                                <option value="">Select travel type</option>
+                                <option value="leisure">Leisure/Holiday</option>
+                                <option value="business">Business Travel</option>
+                                <option value="adventure">Adventure Tourism</option>
+                                <option value="cultural">Cultural Tour</option>
+                                <option value="family">Family Vacation</option>
+                                <option value="honeymoon">Honeymoon</option>
+                                <option value="group">Group Travel</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="travelDate">Preferred Travel Date</label>
+                                <input type="date" id="travelDate" name="travelDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Duration (Days)</label>
+                                <select id="duration" name="duration">
+                                    <option value="">Select duration</option>
+                                    <option value="1-3">1-3 days</option>
+                                    <option value="4-7">4-7 days</option>
+                                    <option value="8-14">1-2 weeks</option>
+                                    <option value="15+">More than 2 weeks</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interests">Areas of Interest</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="historical">
+                                    <span class="checkmark"></span>
+                                    Historical Sites
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="nature">
+                                    <span class="checkmark"></span>
+                                    Nature & Landscapes
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="adventure">
+                                    <span class="checkmark"></span>
+                                    Adventure Sports
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="culture">
+                                    <span class="checkmark"></span>
+                                    Culture & Traditions
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="food">
+                                    <span class="checkmark"></span>
+                                    Local Cuisine
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="shopping">
+                                    <span class="checkmark"></span>
+                                    Shopping & Souqs
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your travel plans, special requirements, or any questions you have..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter" value="yes">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for travel tips and updates
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-container">
+                    <h2>Get in Touch</h2>
+                    <div class="contact-info-cards">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <img src="###" alt="Phone">
+                            </div>
+                            <div class="info-content">
+                                <h3>Phone</h3>
+                                <p>+968 2123 4567</p>
+                                <p>+968 9876 5432</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <img src="###" alt="Email">
+                            </div>
+                            <div class="info-content">
+                                <h3>Email</h3>
+                                <p>info@discoveroman.om</p>
+                                <p>tours@discoveroman.om</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <img src="###" alt="Location">
+                            </div>
+                            <div class="info-content">
+                                <h3>Office</h3>
+                                <p>Building 123, Al Khuwair<br>
+                                Muscat 112, Sultanate of Oman</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <img src="###" alt="Hours">
+                            </div>
+                            <div class="info-content">
+                                <h3>Office Hours</h3>
+                                <p>Sun - Thu: 8:00 AM - 5:00 PM<br>
+                                Fri - Sat: 9:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="faq-section">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-item">
+                            <h4>Do I need a visa to visit Oman?</h4>
+                            <p>Visa requirements vary by nationality. Many countries can obtain a visa on arrival or online e-visa.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>What's the best time to visit Oman?</h4>
+                            <p>October to April offers the most pleasant weather for tourism activities.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Is Oman safe for tourists?</h4>
+                            <p>Yes, Oman is considered one of the safest countries in the Middle East for tourists.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <img src="###" alt="Oman Map">
+                    <div class="map-overlay">
+                        <p>Interactive Map Coming Soon</p>
+                        <p>Located in Muscat, Sultanate of Oman</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contacts -->
+    <section class="emergency-section">
+        <div class="container">
+            <h2 class="section-title">Important Contacts</h2>
+            <div class="emergency-grid">
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <img src="###" alt="Emergency">
+                    </div>
+                    <h3>Emergency Services</h3>
+                    <p>Police: 9999</p>
+                    <p>Fire/Ambulance: 999</p>
+                </div>
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <img src="###" alt="Tourism">
+                    </div>
+                    <h3>Tourism Police</h3>
+                    <p>+968 2456 7890</p>
+                    <p>Available 24/7</p>
+                </div>
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <img src="###" alt="Hospital">
+                    </div>
+                    <h3>Medical Emergency</h3>
+                    <p>Royal Hospital: +968 2459 9000</p>
+                    <p>Sultan Qaboos Hospital: +968 2441 1411</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Discover Oman</h3>
+                    <p>Your gateway to experiencing the beauty and culture of the Sultanate of Oman.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <img src="###" alt="Facebook">
+                        </a>
+                        <a href="#" class="social-link">
+                            <img src="###" alt="Instagram">
+                        </a>
+                        <a href="#" class="social-link">
+                            <img src="###" alt="Twitter">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="attractions.html">Attractions</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><img src="###" alt="Phone"> +968 2123 4567</p>
+                        <p><img src="###" alt="Email"> info@discoveroman.om</p>
+                        <p><img src="###" alt="Location"> Muscat, Sultanate of Oman</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Discover Oman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="###/script.js"></script>
+</body>
+</html>
