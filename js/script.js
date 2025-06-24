@@ -1,442 +1,433 @@
-// DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functions
-    initMobileMenu();
-    initAttractionFilters();
-    initContactForm();
-    initScrollAnimations();
-    initImageLazyLoading();
-});
+// Oman Tourism Website - Enhanced JavaScript
 
-// Mobile Menu Toggle
-function initMobileMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
+// DOM Elements
+const themeToggle = document.getElementById('themeToggle');
+const languageToggle = document.getElementById('languageToggle');
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+const scrollTopBtn = document.getElementById('scrollTop');
+const html = document.documentElement;
+
+// Theme Management
+let currentTheme = localStorage.getItem('theme') || 'light';
+let currentLanguage = localStorage.getItem('language') || 'en';
+
+// Initialize theme and language
+function initializeApp() {
+    setTheme(currentTheme);
+    setLanguage(currentLanguage);
+    setupEventListeners();
+    setupScrollAnimations();
+    setupIntersectionObserver();
+}
+
+// Theme switching functionality
+function setTheme(theme) {
+    currentTheme = theme;
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
     
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on nav links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
+    // Update theme toggle icon
+    const themeIcon = themeToggle.querySelector('i');
+    if (theme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+        themeIcon.style.color = '#DAA520';
+    } else {
+        themeIcon.className = 'fas fa-moon';
+        themeIcon.style.color = '#8B4513';
     }
 }
 
-// Attraction Filters (for attractions page)
-function initAttractionFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const attractionCards = document.querySelectorAll('.attraction-card');
+// Language switching functionality
+function setLanguage(lang) {
+    currentLanguage = lang;
+    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    html.setAttribute('lang', lang);
+    localStorage.setItem('language', lang);
     
-    if (filterButtons.length > 0 && attractionCards.length > 0) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const filter = this.getAttribute('data-filter');
-                
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Filter attractions
-                attractionCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    
-                    if (filter === 'all' || category === filter) {
-                        card.style.display = 'block';
-                        card.style.animation = 'fadeIn 0.5s ease-in-out';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
+    // Update language toggle text
+    languageToggle.innerHTML = `<i class="fas fa-globe"></i> ${lang.toUpperCase()}`;
+    
+    // Update all translatable elements
+    updateTextContent(lang);
 }
 
-// Contact Form Handling
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
+// Update text content based on language
+function updateTextContent(lang) {
+    const translatableElements = document.querySelectorAll('[data-en][data-ar]');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const formObject = {};
-            
-            // Convert FormData to object
-            for (let [key, value] of formData.entries()) {
-                if (formObject[key]) {
-                    // Handle multiple values (like checkboxes)
-                    if (Array.isArray(formObject[key])) {
-                        formObject[key].push(value);
-                    } else {
-                        formObject[key] = [formObject[key], value];
-                    }
-                } else {
-                    formObject[key] = value;
-                }
-            }
-            
-            // Validate required fields
-            if (!validateForm(formObject)) {
-                return;
-            }
-            
-            // Show success message
-            showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // In a real application, you would send this data to your server
-            console.log('Form submitted:', formObject);
-        });
-    }
+    translatableElements.forEach(element => {
+        const text = lang === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+        if (text) {
+            element.textContent = text;
+        }
+    });
 }
 
-// Form Validation
-function validateForm(formData) {
-    const requiredFields = ['fullName', 'email', 'message'];
-    let isValid = true;
+// Setup event listeners
+function setupEventListeners() {
+    // Theme toggle
+    themeToggle.addEventListener('click', () => {
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+    });
     
-    // Remove previous error messages
-    document.querySelectorAll('.error-message').forEach(msg => msg.remove());
+    // Language toggle
+    languageToggle.addEventListener('click', () => {
+        const newLang = currentLanguage === 'en' ? 'ar' : 'en';
+        setLanguage(newLang);
+    });
     
-    requiredFields.forEach(field => {
-        if (!formData[field] || formData[field].trim() === '') {
-            showFieldError(field, 'This field is required');
-            isValid = false;
+    // Mobile menu toggle
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+    
+    // Scroll to top button
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Show/hide scroll to top button
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
         }
     });
     
-    // Validate email format
-    if (formData.email && !isValidEmail(formData.email)) {
-        showFieldError('email', 'Please enter a valid email address');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-// Email validation
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Show field error
-function showFieldError(fieldName, message) {
-    const field = document.getElementById(fieldName);
-    if (field) {
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.style.color = '#d4251a';
-        errorDiv.style.fontSize = '0.9rem';
-        errorDiv.style.marginTop = '5px';
-        errorDiv.textContent = message;
-        
-        field.parentNode.appendChild(errorDiv);
-        field.style.borderColor = '#d4251a';
-        
-        // Remove error on input
-        field.addEventListener('input', function() {
-            field.style.borderColor = '#ddd';
-            if (errorDiv.parentNode) {
-                errorDiv.remove();
-            }
-        }, { once: true });
-    }
-}
-
-// Show form message
-function showFormMessage(message, type) {
-    // Remove existing messages
-    document.querySelectorAll('.form-message').forEach(msg => msg.remove());
-    
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `form-message ${type}`;
-    messageDiv.style.padding = '15px';
-    messageDiv.style.borderRadius = '5px';
-    messageDiv.style.marginBottom = '20px';
-    messageDiv.style.fontWeight = 'bold';
-    messageDiv.textContent = message;
-    
-    // Set colors based on type
-    if (type === 'success') {
-        messageDiv.style.backgroundColor = '#d4edda';
-        messageDiv.style.color = '#155724';
-        messageDiv.style.border = '1px solid #c3e6cb';
-    } else if (type === 'error') {
-        messageDiv.style.backgroundColor = '#f8d7da';
-        messageDiv.style.color = '#721c24';
-        messageDiv.style.border = '1px solid #f5c6cb';
-    }
-    
-    // Insert message at the top of the form
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.insertBefore(messageDiv, contactForm.firstChild);
-        
-        // Auto-hide success messages after 5 seconds
-        if (type === 'success') {
-            setTimeout(() => {
-                if (messageDiv.parentNode) {
-                    messageDiv.remove();
-                }
-            }, 5000);
-        }
-    }
-}
-
-// Scroll Animations
-function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    
-    if (animatedElements.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    // Optionally unobserve after animation
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        });
-        
-        animatedElements.forEach(el => {
-            observer.observe(el);
-        });
-    }
-    
-    // Smooth scroll for anchor links
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
             }
         });
     });
+}
+
+// Scroll animations
+function setupScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
     
-    // Back to top button
-    const backToTopBtn = document.querySelector('.back-to-top');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
+    }, observerOptions);
+    
+    // Observe elements for animation
+    const animatedElements = document.querySelectorAll('.feature-card, .highlight-item, .section-title');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+}
+
+// Intersection Observer for parallax effects
+function setupIntersectionObserver() {
+    const parallaxElements = document.querySelectorAll('.hero, .cta');
+    
+    const parallaxObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    parallaxElements.forEach(el => {
+        el.style.transform = 'translateY(50px)';
+        el.style.transition = 'transform 1s ease';
+        parallaxObserver.observe(el);
+    });
+}
+
+// Enhanced form handling for contact page
+function setupContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleFormSubmit);
         
-        backToTopBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        // Real-time validation
+        const inputs = contactForm.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearFieldError);
         });
     }
 }
 
-// Image Lazy Loading
-function initImageLazyLoading() {
-    const lazyImages = document.querySelectorAll('img[data-src]');
+// Form submission handler
+async function handleFormSubmit(e) {
+    e.preventDefault();
     
-    if (lazyImages.length > 0) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const src = img.getAttribute('data-src');
-                    
-                    if (src) {
-                        // Create a new image to preload
-                        const newImg = new Image();
-                        newImg.onload = function() {
-                            img.src = src;
-                            img.classList.add('loaded');
-                            img.removeAttribute('data-src');
-                        };
-                        newImg.onerror = function() {
-                            img.classList.add('error');
-                            console.warn('Failed to load image:', src);
-                        };
-                        newImg.src = src;
-                    }
-                    
-                    observer.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '50px 0px',
-            threshold: 0.01
-        });
-        
-        lazyImages.forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
     
-    // Handle images with srcset for responsive loading
-    const lazySrcSetImages = document.querySelectorAll('img[data-srcset]');
-    if (lazySrcSetImages.length > 0) {
-        const srcsetObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const srcset = img.getAttribute('data-srcset');
-                    const src = img.getAttribute('data-src');
-                    
-                    if (srcset) {
-                        img.srcset = srcset;
-                        img.removeAttribute('data-srcset');
-                    }
-                    if (src) {
-                        img.src = src;
-                        img.removeAttribute('data-src');
-                    }
-                    
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '50px 0px',
-            threshold: 0.01
-        });
+    // Show loading state
+    submitBtn.innerHTML = '<span class="loading"></span> Sending...';
+    submitBtn.disabled = true;
+    
+    // Simulate form submission (replace with actual API call)
+    try {
+        await new Promise(resolve => setTimeout(resolve, 2000));
         
-        lazySrcSetImages.forEach(img => {
-            srcsetObserver.observe(img);
-        });
+        // Show success message
+        showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+        form.reset();
+        
+    } catch (error) {
+        showNotification('Failed to send message. Please try again.', 'error');
+    } finally {
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
     }
 }
 
-// Utility Functions
+// Field validation
+function validateField(e) {
+    const field = e.target;
+    const value = field.value.trim();
+    const fieldName = field.name;
+    
+    let isValid = true;
+    let errorMessage = '';
+    
+    switch (fieldName) {
+        case 'fullName':
+            if (value.length < 2) {
+                isValid = false;
+                errorMessage = 'Name must be at least 2 characters long';
+            }
+            break;
+        case 'email':
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address';
+            }
+            break;
+        case 'message':
+            if (value.length < 10) {
+                isValid = false;
+                errorMessage = 'Message must be at least 10 characters long';
+            }
+            break;
+    }
+    
+    if (!isValid) {
+        showFieldError(field, errorMessage);
+    } else {
+        clearFieldError(field);
+    }
+}
 
-// Debounce function for performance optimization
-function debounce(func, wait, immediate) {
+// Show field error
+function showFieldError(field, message) {
+    clearFieldError(field);
+    
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'field-error';
+    errorDiv.textContent = message;
+    errorDiv.style.color = '#e74c3c';
+    errorDiv.style.fontSize = '0.875rem';
+    errorDiv.style.marginTop = '0.25rem';
+    
+    field.parentNode.appendChild(errorDiv);
+    field.style.borderColor = '#e74c3c';
+}
+
+// Clear field error
+function clearFieldError(field) {
+    const errorDiv = field.parentNode.querySelector('.field-error');
+    if (errorDiv) {
+        errorDiv.remove();
+    }
+    field.style.borderColor = '';
+}
+
+// Notification system
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    
+    // Style the notification
+    Object.assign(notification.style, {
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        padding: '1rem 1.5rem',
+        borderRadius: '8px',
+        color: 'white',
+        fontWeight: '500',
+        zIndex: '10000',
+        transform: 'translateX(100%)',
+        transition: 'transform 0.3s ease',
+        maxWidth: '300px'
+    });
+    
+    // Set background color based on type
+    const colors = {
+        success: '#27ae60',
+        error: '#e74c3c',
+        info: '#3498db',
+        warning: '#f39c12'
+    };
+    notification.style.backgroundColor = colors[type] || colors.info;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
+
+// Filter functionality for attractions page
+function setupAttractionFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const attractionCards = document.querySelectorAll('.attraction-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filter cards
+            attractionCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.6s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Lazy loading for images
+function setupLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.getAttribute('data-src');
+                img.removeAttribute('data-src');
+                img.classList.add('loaded');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// Performance optimization
+function debounce(func, wait) {
     let timeout;
-    return function executedFunction() {
-        const context = this;
-        const args = arguments;
-        
-        const later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
         };
-        
-        const callNow = immediate && !timeout;
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
-        
-        if (callNow) func.apply(context, args);
     };
 }
 
-// Throttle function for scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// Check if element is in viewport
-function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// Additional Event Listeners
-
-// Handle window resize
-window.addEventListener('resize', debounce(function() {
-    // Close mobile menu on resize to desktop
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (window.innerWidth > 768 && hamburger && navMenu) {
-        hamburger.classList.remove('active');
+// Resize handler
+const handleResize = debounce(() => {
+    // Handle responsive adjustments
+    if (window.innerWidth > 768) {
         navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
     }
-}, 250));
+}, 250);
 
-// Handle scroll events
-window.addEventListener('scroll', throttle(function() {
-    // Add scroll class to header for styling
-    const header = document.querySelector('header');
-    if (header) {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }
-}, 100));
-
-// Handle page visibility change
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        // Page is hidden, pause any ongoing animations or videos
-        document.querySelectorAll('video').forEach(video => {
-            if (!video.paused) {
-                video.pause();
-                video.setAttribute('data-was-playing', 'true');
-            }
-        });
-    } else {
-        // Page is visible, resume videos that were playing
-        document.querySelectorAll('video[data-was-playing="true"]').forEach(video => {
-            video.play();
-            video.removeAttribute('data-was-playing');
-        });
-    }
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeApp();
+    setupContactForm();
+    setupAttractionFilters();
+    setupLazyLoading();
+    
+    // Add resize listener
+    window.addEventListener('resize', handleResize);
+    
+    // Add page load animation
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+    }, 100);
 });
 
-// Error handling for images
-document.addEventListener('error', function(e) {
-    if (e.target.tagName === 'IMG') {
-        e.target.classList.add('image-error');
-        // Optionally set a fallback image
-        if (e.target.getAttribute('data-fallback')) {
-            e.target.src = e.target.getAttribute('data-fallback');
-        }
-    }
-}, true);
+// Service Worker registration for PWA features
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+                console.log('SW registration failed: ', registrationError);
+            });
+    });
+}
+
+// Export functions for potential external use
+window.OmanTourism = {
+    setTheme,
+    setLanguage,
+    showNotification,
+    setupContactForm,
+    setupAttractionFilters
+};

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oman Attractions - Discover Oman</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -24,6 +25,16 @@
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="language-toggle" id="languageToggle">
+                        <i class="fas fa-globe"></i> EN
+                    </button>
+                </li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -36,8 +47,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">Discover Oman's Attractions</h1>
-            <p class="page-subtitle">Explore the diverse wonders of the Sultanate</p>
+            <h1 class="page-title" data-en="Discover Oman's Attractions" data-ar="اكتشف معالم عُمان السياحية">Discover Oman's Attractions</h1>
+            <p class="page-subtitle" data-en="Explore the diverse wonders of the Sultanate" data-ar="استكشف عجائب السلطنة المتنوعة">Explore the diverse wonders of the Sultanate</p>
         </div>
     </section>
 
@@ -45,11 +56,11 @@
     <section class="filter-section">
         <div class="container">
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Attractions</button>
-                <button class="filter-btn" data-filter="historical">Historical</button>
-                <button class="filter-btn" data-filter="natural">Natural</button>
-                <button class="filter-btn" data-filter="cultural">Cultural</button>
-                <button class="filter-btn" data-filter="adventure">Adventure</button>
+                <button class="filter-btn active" data-filter="all" data-en="All Attractions" data-ar="جميع المعالم">All Attractions</button>
+                <button class="filter-btn" data-filter="historical" data-en="Historical" data-ar="تاريخية">Historical</button>
+                <button class="filter-btn" data-filter="natural" data-en="Natural" data-ar="طبيعية">Natural</button>
+                <button class="filter-btn" data-filter="cultural" data-en="Cultural" data-ar="ثقافية">Cultural</button>
+                <button class="filter-btn" data-filter="adventure" data-en="Adventure" data-ar="مغامرة">Adventure</button>
             </div>
         </div>
     </section>
@@ -61,23 +72,23 @@
                 <!-- Historical Attractions -->
                 <div class="attraction-card" data-category="historical">
                     <div class="card-image">
-                        <img src="###" alt="Nizwa Fort">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nizwa Fort">
                         <div class="card-overlay">
-                            <span class="category-tag">Historical</span>
+                            <span class="category-tag" data-en="Historical" data-ar="تاريخية">Historical</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Nizwa Fort</h3>
+                        <h3 data-en="Nizwa Fort" data-ar="قلعة نزوى">Nizwa Fort</h3>
                         <p class="location">
-                            <img src="###" alt="Location"> Nizwa
+                            <i class="fas fa-map-marker-alt"></i> <span data-en="Nizwa" data-ar="نزوى">Nizwa</span>
                         </p>
-                        <p>Built in the 17th century, this impressive cylindrical fort offers panoramic views and insights into Oman's rich history.</p>
+                        <p data-en="Built in the 17th century, this impressive cylindrical fort offers panoramic views and insights into Oman's rich history." data-ar="بُنيت في القرن السابع عشر، تقدم هذه القلعة الأسطوانية المثيرة للإعجاب إطلالات بانورامية ورؤى في تاريخ عُمان الغني.">Built in the 17th century, this impressive cylindrical fort offers panoramic views and insights into Oman's rich history.</p>
                         <div class="card-features">
                             <span class="feature">
-                                <img src="###" alt="Clock"> 2-3 hours
+                                <i class="fas fa-clock"></i> <span data-en="2-3 hours" data-ar="2-3 ساعات">2-3 hours</span>
                             </span>
                             <span class="feature">
-                                <img src="###" alt="Star"> 4.8/5
+                                <i class="fas fa-star"></i> 4.8/5
                             </span>
                         </div>
                     </div>
@@ -85,23 +96,23 @@
 
                 <div class="attraction-card" data-category="historical">
                     <div class="card-image">
-                        <img src="###" alt="Bahla Fort">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bahla Fort">
                         <div class="card-overlay">
-                            <span class="category-tag">Historical</span>
+                            <span class="category-tag" data-en="Historical" data-ar="تاريخية">Historical</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Bahla Fort</h3>
+                        <h3 data-en="Bahla Fort" data-ar="قلعة بهلاء">Bahla Fort</h3>
                         <p class="location">
-                            <img src="###" alt="Location"> Bahla
+                            <i class="fas fa-map-marker-alt"></i> <span data-en="Bahla" data-ar="بهلاء">Bahla</span>
                         </p>
-                        <p>A UNESCO World Heritage site dating back to the 13th century, showcasing traditional Omani mud-brick architecture.</p>
+                        <p data-en="A UNESCO World Heritage site dating back to the 13th century, showcasing traditional Omani mud-brick architecture." data-ar="موقع تراث عالمي لليونسكو يعود إلى القرن الثالث عشر، يعرض العمارة العُمانية التقليدية من الطوب الطيني.">A UNESCO World Heritage site dating back to the 13th century, showcasing traditional Omani mud-brick architecture.</p>
                         <div class="card-features">
                             <span class="feature">
-                                <img src="###" alt="Clock"> 1-2 hours
+                                <i class="fas fa-clock"></i> <span data-en="1-2 hours" data-ar="1-2 ساعة">1-2 hours</span>
                             </span>
                             <span class="feature">
-                                <img src="###" alt="Star"> 4.6/5
+                                <i class="fas fa-star"></i> 4.6/5
                             </span>
                         </div>
                     </div>
@@ -110,23 +121,23 @@
                 <!-- Natural Attractions -->
                 <div class="attraction-card" data-category="natural">
                     <div class="card-image">
-                        <img src="###" alt="Wadi Shab">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wadi Shab">
                         <div class="card-overlay">
-                            <span class="category-tag">Natural</span>
+                            <span class="category-tag" data-en="Natural" data-ar="طبيعية">Natural</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Wadi Shab</h3>
+                        <h3 data-en="Wadi Shab" data-ar="وادي شاب">Wadi Shab</h3>
                         <p class="location">
-                            <img src="###" alt="Location"> Sur
+                            <i class="fas fa-map-marker-alt"></i> <span data-en="Sur" data-ar="صور">Sur</span>
                         </p>
-                        <p>A stunning gorge with turquoise pools, waterfalls, and hidden caves perfect for swimming and adventure.</p>
+                        <p data-en="A stunning gorge with turquoise pools, waterfalls, and hidden caves perfect for swimming and adventure." data-ar="وادٍ خلاب مع برك فيروزية وشلالات وكهوف مخفية مثالية للسباحة والمغامرة.">A stunning gorge with turquoise pools, waterfalls, and hidden caves perfect for swimming and adventure.</p>
                         <div class="card-features">
                             <span class="feature">
-                                <img src="###" alt="Clock"> Half day
+                                <i class="fas fa-clock"></i> <span data-en="Half day" data-ar="نصف يوم">Half day</span>
                             </span>
                             <span class="feature">
-                                <img src="###" alt="Star"> 4.9/5
+                                <i class="fas fa-star"></i> 4.9/5
                             </span>
                         </div>
                     </div>
@@ -134,23 +145,23 @@
 
                 <div class="attraction-card" data-category="natural">
                     <div class="card-image">
-                        <img src="###" alt="Jebel Shams">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jebel Shams">
                         <div class="card-overlay">
-                            <span class="category-tag">Natural</span>
+                            <span class="category-tag" data-en="Natural" data-ar="طبيعية">Natural</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Jebel Shams</h3>
+                        <h3 data-en="Jebel Shams" data-ar="جبل شمس">Jebel Shams</h3>
                         <p class="location">
-                            <img src="###" alt="Location"> Al Hamra
+                            <i class="fas fa-map-marker-alt"></i> <span data-en="Al Hamra" data-ar="الحمراء">Al Hamra</span>
                         </p>
-                        <p>Oman's highest peak offering breathtaking views of the Grand Canyon of Oman and excellent hiking trails.</p>
+                        <p data-en="Oman's highest peak offering breathtaking views of the Grand Canyon of Oman and excellent hiking trails." data-ar="أعلى قمة في عُمان تقدم إطلالات خلابة على جراند كانيون عُمان ومسارات ممتازة للمشي.">Oman's highest peak offering breathtaking views of the Grand Canyon of Oman and excellent hiking trails.</p>
                         <div class="card-features">
                             <span class="feature">
-                                <img src="###" alt="Clock"> Full day
+                                <i class="fas fa-clock"></i> <span data-en="Full day" data-ar="يوم كامل">Full day</span>
                             </span>
                             <span class="feature">
-                                <img src="###" alt="Star"> 4.7/5
+                                <i class="fas fa-star"></i> 4.7/5
                             </span>
                         </div>
                     </div>
@@ -159,23 +170,23 @@
                 <!-- Cultural Attractions -->
                 <div class="attraction-card" data-category="cultural">
                     <div class="card-image">
-                        <img src="###" alt="Sultan Qaboos Grand Mosque">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sultan Qaboos Grand Mosque">
                         <div class="card-overlay">
-                            <span class="category-tag">Cultural</span>
+                            <span class="category-tag" data-en="Cultural" data-ar="ثقافية">Cultural</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Sultan Qaboos Grand Mosque</h3>
+                        <h3 data-en="Sultan Qaboos Grand Mosque" data-ar="مسجد السلطان قابوس الكبير">Sultan Qaboos Grand Mosque</h3>
                         <p class="location">
-                            <img src="###" alt="Location"> Muscat
+                            <i class="fas fa-map-marker-alt"></i> <span data-en="Muscat" data-ar="مسقط">Muscat</span>
                         </p>
-                        <p>A magnificent architectural masterpiece featuring stunning Islamic design, beautiful gardens, and the world's second-largest carpet.</p>
+                        <p data-en="A magnificent architectural masterpiece featuring stunning Islamic design, beautiful gardens, and the world's second-largest carpet." data-ar="تحفة معمارية رائعة تتميز بتصميم إسلامي خلاب وحدائق جميلة وثاني أكبر سجادة في العالم.">A magnificent architectural masterpiece featuring stunning Islamic design, beautiful gardens, and the world's second-largest carpet.</p>
                         <div class="card-features">
                             <span class="feature">
-                                <img src="###" alt="Clock"> 1-2 hours
+                                <i class="fas fa-clock"></i> <span data-en="1-2 hours" data-ar="1-2 ساعة">1-2 hours</span>
                             </span>
                             <span class="feature">
-                                <img src="###" alt="Star"> 4.9/5
+                                <i class="fas fa-star"></i> 4.9/5
                             </span>
                         </div>
                     </div>
@@ -183,23 +194,23 @@
 
                 <div class="attraction-card" data-category="cultural">
                     <div class="card-image">
-                        <img src="###" alt="Mutrah Souq">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mutrah Souq">
                         <div class="card-overlay">
-                            <span class="category-tag">Cultural</span>
+                            <span class="category-tag" data-en="Cultural" data-ar="ثقافية">Cultural</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Mutrah Souq</h3>
+                        <h3 data-en="Mutrah Souq" data-ar="سوق مطرح">Mutrah Souq</h3>
                         <p class="location">
-                            <img src="###" alt="Location"> Muscat
+                            <i class="fas fa-map-marker-alt"></i> <span data-en="Muscat" data-ar="مسقط">Muscat</span>
                         </p>
-                        <p>One of the oldest markets in the Arab world, filled with traditional crafts, spices, and authentic Omani products.</p>
+                        <p data-en="One of the oldest markets in the Arab world, filled with traditional crafts, spices, and authentic Omani products." data-ar="أحد أقدم الأسواق في العالم العربي، مليء بالحرف التقليدية والتوابل والمنتجات العُمانية الأصيلة.">One of the oldest markets in the Arab world, filled with traditional crafts, spices, and authentic Omani products.</p>
                         <div class="card-features">
                             <span class="feature">
-                                <img src="###" alt="Clock"> 2-3 hours
+                                <i class="fas fa-clock"></i> <span data-en="2-3 hours" data-ar="2-3 ساعات">2-3 hours</span>
                             </span>
                             <span class="feature">
-                                <img src="###" alt="Star"> 4.5/5
+                                <i class="fas fa-star"></i> 4.5/5
                             </span>
                         </div>
                     </div>
@@ -208,23 +219,23 @@
                 <!-- Adventure Attractions -->
                 <div class="attraction-card" data-category="adventure">
                     <div class="card-image">
-                        <img src="###" alt="Wahiba Sands">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wahiba Sands">
                         <div class="card-overlay">
-                            <span class="category-tag">Adventure</span>
+                            <span class="category-tag" data-en="Adventure" data-ar="مغامرة">Adventure</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Wahiba Sands</h3>
+                        <h3 data-en="Wahiba Sands" data-ar="رمال وهيبة">Wahiba Sands</h3>
                         <p class="location">
-                            <img src="###" alt="Location"> Bidiyah
+                            <i class="fas fa-map-marker-alt"></i> <span data-en="Wahiba" data-ar="وهيبة">Wahiba</span>
                         </p>
-                        <p>Experience desert adventures with dune bashing, camel trekking, and overnight camping under the stars.</p>
+                        <p data-en="Experience the magic of the desert with golden dunes, Bedouin culture, and unforgettable desert camping under starlit skies." data-ar="اختبر سحر الصحراء مع الكثبان الذهبية وثقافة البدو والتخييم الصحراوي الذي لا يُنسى تحت السماء المرصعة بالنجوم.">Experience the magic of the desert with golden dunes, Bedouin culture, and unforgettable desert camping under starlit skies.</p>
                         <div class="card-features">
                             <span class="feature">
-                                <img src="###" alt="Clock"> 1-2 days
+                                <i class="fas fa-clock"></i> <span data-en="Full day" data-ar="يوم كامل">Full day</span>
                             </span>
                             <span class="feature">
-                                <img src="###" alt="Star"> 4.8/5
+                                <i class="fas fa-star"></i> 4.8/5
                             </span>
                         </div>
                     </div>
@@ -232,23 +243,23 @@
 
                 <div class="attraction-card" data-category="adventure">
                     <div class="card-image">
-                        <img src="###" alt="Musandam Fjords">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dolphin Watching">
                         <div class="card-overlay">
-                            <span class="category-tag">Adventure</span>
+                            <span class="category-tag" data-en="Adventure" data-ar="مغامرة">Adventure</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Musandam Fjords</h3>
+                        <h3 data-en="Dolphin Watching" data-ar="مشاهدة الدلافين">Dolphin Watching</h3>
                         <p class="location">
-                            <img src="###" alt="Location"> Musandam
+                            <i class="fas fa-map-marker-alt"></i> <span data-en="Muscat Coast" data-ar="ساحل مسقط">Muscat Coast</span>
                         </p>
-                        <p>Cruise through dramatic fjords, enjoy dolphin watching, and experience traditional dhow boat trips.</p>
+                        <p data-en="Take a boat trip to see dolphins in their natural habitat along Oman's beautiful coastline." data-ar="خذ رحلة بالقارب لرؤية الدلافين في موطنها الطبيعي على طول الساحل العُماني الجميل.">Take a boat trip to see dolphins in their natural habitat along Oman's beautiful coastline.</p>
                         <div class="card-features">
                             <span class="feature">
-                                <img src="###" alt="Clock"> Full day
+                                <i class="fas fa-clock"></i> <span data-en="3-4 hours" data-ar="3-4 ساعات">3-4 hours</span>
                             </span>
                             <span class="feature">
-                                <img src="###" alt="Star"> 4.7/5
+                                <i class="fas fa-star"></i> 4.7/5
                             </span>
                         </div>
                     </div>
@@ -257,31 +268,31 @@
         </div>
     </section>
 
-    <!-- Travel Tips -->
+    <!-- Travel Tips Section -->
     <section class="travel-tips">
         <div class="container">
-            <h2 class="section-title">Travel Tips</h2>
+            <h2 class="section-title" data-en="Travel Tips" data-ar="نصائح السفر">Travel Tips</h2>
             <div class="tips-grid">
                 <div class="tip-card">
                     <div class="tip-icon">
-                        <img src="###" alt="Best Time">
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <h3>Best Time to Visit</h3>
-                    <p>October to April offers pleasant weather for exploring outdoor attractions.</p>
+                    <h3 data-en="Best Time to Visit" data-ar="أفضل وقت للزيارة">Best Time to Visit</h3>
+                    <p data-en="October to April offers the most pleasant weather for exploring Oman's attractions." data-ar="يقدم أكتوبر إلى أبريل أفضل طقس لاستكشاف معالم عُمان.">October to April offers the most pleasant weather for exploring Oman's attractions.</p>
                 </div>
                 <div class="tip-card">
                     <div class="tip-icon">
-                        <img src="###" alt="Dress Code">
+                        <i class="fas fa-car"></i>
                     </div>
-                    <h3>Dress Code</h3>
-                    <p>Modest clothing is recommended, especially when visiting religious sites.</p>
+                    <h3 data-en="Getting Around" data-ar="التنقل">Getting Around</h3>
+                    <p data-en="Rent a 4x4 vehicle for desert adventures and remote attractions." data-ar="استأجر مركبة 4x4 للمغامرات الصحراوية والمعالم النائية.">Rent a 4x4 vehicle for desert adventures and remote attractions.</p>
                 </div>
                 <div class="tip-card">
                     <div class="tip-icon">
-                        <img src="###" alt="Transportation">
+                        <i class="fas fa-camera"></i>
                     </div>
-                    <h3>Transportation</h3>
-                    <p>Rent a car for flexibility or join organized tours for remote locations.</p>
+                    <h3 data-en="Photography" data-ar="التصوير">Photography</h3>
+                    <p data-en="Respect local customs and ask permission before photographing people." data-ar="احترم العادات المحلية واسأل الإذن قبل تصوير الأشخاص.">Respect local customs and ask permission before photographing people.</p>
                 </div>
             </div>
         </div>
@@ -292,42 +303,50 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Discover Oman</h3>
-                    <p>Your gateway to experiencing the beauty and culture of the Sultanate of Oman.</p>
+                    <h3 data-en="Discover Oman" data-ar="اكتشف عُمان">Discover Oman</h3>
+                    <p data-en="Your gateway to experiencing the beauty and culture of the Sultanate of Oman." data-ar="بوابتك لاختبار جمال وثقافة سلطنة عُمان.">Your gateway to experiencing the beauty and culture of the Sultanate of Oman.</p>
                     <div class="social-links">
                         <a href="#" class="social-link">
-                            <img src="###" alt="Facebook">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#" class="social-link">
-                            <img src="###" alt="Instagram">
+                            <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#" class="social-link">
-                            <img src="###" alt="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="attractions.html">Attractions</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="attractions.html" data-en="Attractions" data-ar="المعالم السياحية">Attractions</a></li>
+                        <li><a href="contact.html" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
+                    <h4 data-en="Contact Info" data-ar="معلومات الاتصال">Contact Info</h4>
                     <div class="contact-info">
-                        <p><img src="###" alt="Phone"> +968 2123 4567</p>
-                        <p><img src="###" alt="Email"> info@discoveroman.om</p>
-                        <p><img src="###" alt="Location"> Muscat, Sultanate of Oman</p>
+                        <p><i class="fas fa-phone"></i> +968 2123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@discoveroman.om</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span data-en="Muscat, Sultanate of Oman" data-ar="مسقط، سلطنة عُمان">Muscat, Sultanate of Oman</span></p>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Discover Oman. All rights reserved.</p>
+                <p>&copy; 2025 <span data-en="Discover Oman" data-ar="اكتشف عُمان">Discover Oman</span>. <span data-en="All rights reserved" data-ar="جميع الحقوق محفوظة">All rights reserved</span>.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="js/script.js"></script>
 </body>
