@@ -6,6 +6,7 @@
     <title>Discover Oman - Home</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 <body>
   
@@ -14,7 +15,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <img src="assets/iconoma.jpeg" alt="Oman Logo" class="logo-img">
-                <span class="logo-text">Discover Oman</span>
+                <span class="logo-text"><a href="index.html">Discover Oman</a></span>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -47,7 +48,7 @@
     
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" data-aos="fade-up">
         <div class="hero-content">
             <h1 class="hero-title" data-en="Welcome to the Sultanate of Oman" data-ar="مرحباً بكم في سلطنة عُمان">Welcome to the Sultanate of Oman</h1>
             <p class="hero-subtitle" data-en="Discover ancient heritage, stunning landscapes, and warm hospitality" data-ar="اكتشف التراث القديم والمناظر الطبيعية الخلابة والضيافة الحارة">Discover ancient heritage, stunning landscapes, and warm hospitality</p>
@@ -61,8 +62,19 @@
         </div>
     </section>
 
+    <!-- Video Section -->
+    <section class="promo-video" data-aos="fade-up">
+        <div class="container text-center">
+            <h2>شاهد جمال عُمان</h2>
+            <div class="video-wrapper">
+                <iframe id="omanYoutube" width="560" height="315" src="https://www.youtube-nocookie.com/embed/byZ3h4B3sAc?si=V2I3vsCQuSx_esy1&enablejsapi=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <button id="muteBtn" class="btn btn-secondary" style="margin-top:10px">تشغيل/كتم الصوت</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title" data-en="Why Choose Oman?" data-ar="لماذا تختار عُمان؟">Why Choose Oman?</h2>
             <div class="features-grid">
@@ -92,9 +104,14 @@
     </section>
 
     <!-- Highlights Section -->
-    <section class="highlights">
+    <section class="highlights" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title" data-en="Oman Highlights" data-ar="أبرز معالم عُمان">Oman Highlights</h2>
+            <!-- Smart Search Bar -->
+            <div class="search-bar" style="margin-bottom:2rem;">
+                <input type="text" id="searchInput" placeholder="ابحث عن معلم سياحي..." autocomplete="off" />
+                <ul id="suggestions" class="suggestions-list"></ul>
+            </div>
             <div class="highlights-grid">
                 <div class="highlight-item">
                     <img src="assets/سوق مطرح.jpeg" alt="Muscat" class="highlight-img">
@@ -122,7 +139,7 @@
     </section>
 
     <!-- New Section: Cultural Experiences -->
-    <section class="features">
+    <section class="features" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title" data-en="Cultural Experiences" data-ar="الخبرات الثقافية">Cultural Experiences</h2>
             <div class="features-grid">
@@ -152,7 +169,7 @@
     </section>
 
     <!-- New Section: Adventure Activities -->
-    <section class="highlights">
+    <section class="highlights" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title" data-en="Adventure Activities" data-ar="أنشطة المغامرة">Adventure Activities</h2>
             <div class="highlights-grid">
@@ -242,6 +259,103 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- AI Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <!-- Chat Button -->
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-badge" id="chatbotBadge">1</span>
+        </button>
+        
+        <!-- Chat Window -->
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <i class="fas fa-robot"></i>
+                    <span data-en="Oman Tourism Assistant" data-ar="مساعد السياحة العُمانية">Oman Tourism Assistant</span>
+                </div>
+                <button class="chatbot-close" id="chatbotClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbotMessages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+            
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="اكتب سؤالك هنا..." data-en="Type your question here..." data-ar="اكتب سؤالك هنا...">
+                <button id="chatbotSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var player, isMuted = true;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                height: '405',
+                width: '720',
+                videoId: 'Qd7F3g8K2wE',
+                playerVars: { 'autoplay': 1, 'controls': 1, 'mute': 1 },
+                events: {
+                    'onReady': function(event) {
+                        event.target.playVideo();
+                    }
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var muteBtn = document.getElementById('muteBtn');
+            muteBtn.addEventListener('click', function() {
+                if (player) {
+                    if (isMuted) { player.unMute(); } else { player.mute(); }
+                    isMuted = !isMuted;
+                }
+            });
+        });
+    </script>
+    <script>
+        // تشغيل الفيديو تلقائيًا عند الوصول للقسم
+        let videoStarted = false;
+        const videoSection = document.querySelector('.promo-video');
+        const ytFrame = document.getElementById('omanYoutube');
+        const muteBtn = document.getElementById('muteBtn');
+        let isMuted = true;
+
+        function playYoutubeVideo() {
+            if (ytFrame && !videoStarted) {
+                ytFrame.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                videoStarted = true;
+            }
+        }
+        function toggleMute() {
+            if (ytFrame) {
+                ytFrame.contentWindow.postMessage('{"event":"command","func":"' + (isMuted ? 'unMute' : 'mute') + '","args":""}', '*');
+                isMuted = !isMuted;
+            }
+        }
+        if (muteBtn) {
+            muteBtn.addEventListener('click', toggleMute);
+        }
+        if (videoSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        playYoutubeVideo();
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(videoSection);
+        }
+    </script>
 </body>
 </html>

@@ -13,7 +13,8 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <img src="assets/iconoma.jpeg" alt="Oman Logo" class="logo-img">
-                <span class="logo-text">Discover Oman</span>
+                <span class="logo-text"><a href="index.html">Discover Oman</a></span>
+
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -177,6 +178,22 @@
 
                         <button type="submit" class="btn btn-primary" data-en="Send Message" data-ar="إرسال الرسالة">Send Message</button>
                     </form>
+                    
+                    <!-- Recommendations Button -->
+                    <div class="recommendations-section" style="margin-top: 2rem; text-align: center;">
+                        <button type="button" class="btn btn-primary" id="getRecommendations" data-en="Get Personalized Recommendations" data-ar="احصل على توصيات مخصصة">
+                            <i class="fas fa-lightbulb"></i>
+                            <span data-en="Get Personalized Recommendations" data-ar="احصل على توصيات مخصصة">Get Personalized Recommendations</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Recommendations Display -->
+                    <div class="recommendations-display" id="recommendationsDisplay" style="display: none; margin-top: 2rem;">
+                        <h3 data-en="Recommended Places for You" data-ar="الأماكن الموصى بها لك">Recommended Places for You</h3>
+                        <div class="recommendations-grid" id="recommendationsGrid">
+                            <!-- Recommendations will be populated here -->
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Contact Info -->
@@ -372,6 +389,39 @@
     <button class="scroll-top" id="scrollTop">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- AI Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <!-- Chat Button -->
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-badge" id="chatbotBadge">1</span>
+        </button>
+        
+        <!-- Chat Window -->
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <i class="fas fa-robot"></i>
+                    <span data-en="Oman Tourism Assistant" data-ar="مساعد السياحة العُمانية">Oman Tourism Assistant</span>
+                </div>
+                <button class="chatbot-close" id="chatbotClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbotMessages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+            
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="اكتب سؤالك هنا..." data-en="Type your question here..." data-ar="اكتب سؤالك هنا...">
+                <button id="chatbotSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
